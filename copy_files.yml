@@ -8,7 +8,7 @@
 
     - name: Sending Files to the server
       copy:
-        src: /var/lib/jenkins/workspace/myproject
+        src: /var/lib/jenkins/workspace/myproject/
         dest: /home/yash/app/
 
     - name: Removing podman
