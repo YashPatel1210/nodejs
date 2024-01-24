@@ -1,0 +1,55 @@
+- hosts: all
+  become: true
+  gather_facts: no
+  tasks:
+
+    - name: Changing Working Directory
+      shell: mkdir -p /home/yash/app && cd /home/yash/app
+
+    - name: Sending Files to the server
+      copy:
+        src: .
+        dest: /tmp
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Removing podman
+      yum:
+        name: podman
+        state: absent
+
+    - name: Removing npm files
+      shell: npm uninstall
+
+    - name: Installing npm modules
+      shell: npm install
+
+    - name: "Installing Docker Prerequisite packages"
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - yum-utils
+        - device-mapper-persistent-data
+        - lvm2
+
+    - name: "Configuring docker-ce repo"
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+        mode: 0644
+
+    - name: " Installing Docker latest version"
+      yum:
+        name: docker-ce
+        state: present
+
+    - name: " Starting and Enabling Docker service"
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: "Bulding Docker Image"
+      shell: docker build -t webelight_image .

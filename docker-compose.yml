@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  mainapp:
+    image: "webelight_image"
+    container_name: webelight_app
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_HOST=db
+      - MONGO_PORT=27017
+      - MONGO_DB_NAME=library
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis
+
+    ports:
+      - "5000:5000"
+    links:
+      - db
+      - redis
+
+    volumes:
+      - .:/home/yash/app
+
+  db:
+    image: "mongo:latest"
+    container_name: webelight_db
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+
+    volumes:     
+      - db_data:/data/db
+  redis:
+    image: "redis:latest"
+volumes:
+  db_data:
