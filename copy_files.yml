@@ -10,6 +10,9 @@
       copy:
         src: /var/lib/jenkins/workspace/myproject/
         dest: /home/yash/app/
+        owner: root
+        group: root
+        mode: '0644'
 
     - name: Removing podman
       yum:
