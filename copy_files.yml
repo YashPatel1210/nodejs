@@ -8,8 +8,8 @@
 
     - name: Sending Files to the server
       copy:
-        src: .
-        dest: /tmp
+        src: /nodejs/
+        dest: /home/yash/app/
 
     - name: Removing podman
       yum:
