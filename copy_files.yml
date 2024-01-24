@@ -10,9 +10,6 @@
       copy:
         src: .
         dest: /tmp
-        owner: root
-        group: root
-        mode: '0644'
 
     - name: Removing podman
       yum:
