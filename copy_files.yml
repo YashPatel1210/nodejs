@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: cluster
   become: true
   gather_facts: no
   tasks:
