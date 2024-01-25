@@ -3,8 +3,8 @@
   gather_facts: no
   tasks:
 
-    - name: Changing Working Directory
-      shell: mkdir -p /home/yaspal/app && cd /home/yaspal/app
+    - name: Creating Working Directory
+      shell: mkdir -p /home/yaspal/app
 
     - name: Sending Files to the server
       copy:
@@ -15,7 +15,11 @@
       yum:
         name: podman
         state: absent
-    - name: "Installing Docker Prerequisite packages"
+        
+    - name: Changing Working Directory
+      shell: cd /home/yaspal/app/
+
+    - name: "Installing npm package"
       yum:
         name: npm
         state: latest
