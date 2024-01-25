@@ -1,2 +1,5 @@
-10.59.11.112
+[cluster:vars]
 ansible_become_pass='{{ sudo_pwd }}'
+
+[cluster]
+10.59.11.112
