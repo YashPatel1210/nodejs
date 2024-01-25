@@ -51,12 +51,6 @@
         enabled: yes
 
     - name: "Bulding Docker Image"
-      docker_image:
-        name: webelight_image
-        build:
-          path: /home/yaspal/app/
-          source: build
-        state: present
-      
+      shell: cd app/; docker build . -t webelight_image
     
       
