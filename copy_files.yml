@@ -6,10 +6,10 @@
     - name: Creating Working Directory
       shell: mkdir -p /home/yaspal/app
 
-    - name: Sending Files to the server
-      copy:
-        src: /var/lib/jenkins/workspace/myproject/
-        dest: /home/yaspal/app/
+#    - name: Sending Files to the server
+#      copy:
+#        src: /var/lib/jenkins/workspace/myproject/
+#        dest: /home/yaspal/app/
 
     - name: Removing podman
       yum:
@@ -51,7 +51,12 @@
         enabled: yes
 
     - name: "Bulding Docker Image"
-      shell: docker build -t webelight_image -f 'app/Dockerfile'
+      docker_image:
+        name: webelight_image
+        build:
+          path: /home/yaspal/app/
+          source: build
+        state: present
       
     
       
