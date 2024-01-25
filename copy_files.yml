@@ -52,3 +52,7 @@
 
     - name: "Bulding Docker Image"
       shell: pwd
+      register: pwd
+    - debug:
+        var: pwd
+      
