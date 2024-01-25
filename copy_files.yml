@@ -24,12 +24,6 @@
         name: npm
         state: latest
         
-    - name: Removing npm files
-      shell: npm uninstall
-
-    - name: Installing npm modules
-      shell: npm install
-
     - name: "Installing Docker Prerequisite packages"
       yum:
         name: "{{ item }}"
