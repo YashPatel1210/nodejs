@@ -4,15 +4,12 @@
   tasks:
 
     - name: Changing Working Directory
-      shell: mkdir -p /home/yash/app && cd /home/yash/app
+      shell: mkdir -p /home/yaspal/app && cd /home/yaspal/app
 
     - name: Sending Files to the server
       copy:
         src: /var/lib/jenkins/workspace/myproject/
-        dest: /home/yash/app/
-        owner: root
-        group: root
-        mode: '0644'
+        dest: /home/yaspal/app/
 
     - name: Removing podman
       yum:
