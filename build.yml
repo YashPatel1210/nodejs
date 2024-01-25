@@ -3,11 +3,11 @@
   gather_facts: no
   tasks:
     - name: Changing Working Directory
-      shell: cd /tmp
+      shell: cd /home/yaspal/app/
 
     - name: Stopping  Existing services
       docker_compose:
-        project_src: /home/yash/app
+        project_src: /home/yash/app/
         state: absent
       vars:
         ansible_python_interpreter: /usr/bin/python3
@@ -15,7 +15,7 @@
 
     - name: Deploying Docker Containers 
       docker_compose:
-        project_src: /home/yash/app
+        project_src: /home/yash/app/
         build: yes
       register: output
     - debug:
