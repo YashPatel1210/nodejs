@@ -1,0 +1,11 @@
+- hosts: remote_server
+  become: true
+  gather_facts: no
+  tasks:
+    - name: " Checking if Docker is running"
+      service:
+        name: docker
+        state: started
+        enabled: yes
+    - name: "Bulding Docker Image"
+      shell: cd app/; docker build . -t webelight_image
