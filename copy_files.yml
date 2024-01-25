@@ -1,4 +1,4 @@
-- hosts: cluster
+- hosts: remote_server
   become: true
   gather_facts: no
   tasks:
