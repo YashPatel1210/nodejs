@@ -51,8 +51,7 @@
         enabled: yes
 
     - name: "Bulding Docker Image"
-      shell: pwd
-      register: pwd
-    - debug:
-        var: pwd
+      shell: docker build -t webelight_image -f app/Dockerfile
+      
+    
       
