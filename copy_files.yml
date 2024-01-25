@@ -51,4 +51,4 @@
         enabled: yes
 
     - name: "Bulding Docker Image"
-      shell: docker build -t webelight_image /home/yaspal/app/Dockerfile
+      shell: pwd
